@@ -9,7 +9,7 @@
 
 ---
 
-**SNOOZIO** is a Flutter-based mobile sleep improvement app that guides users through a personalized 30-day program to enhance sleep quality and foster lasting sleep habits. Wrapped in a calming nocturnal theme, the app delivers tailored care plans based on your sleep severity level—whether mild, moderate, or severe—ensuring you receive the right support for your unique needs.
+**SNOOZIO** is a Flutter-based mobile sleep improvement app that guides users through a personalized 30-day program to enhance sleep quality and foster lasting sleep habits. Wrapped in a calming nocturnal theme, the app delivers tailored care plans based on your sleep severity level, whether mild, moderate, or severe, ensuring you receive the right support for your unique needs.
 
 ### ✦ Key Features
 - Tailored Care Plans — Personalized 30-day programs designed for mild, moderate, or severe sleep issues
