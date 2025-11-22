@@ -722,7 +722,7 @@ class _ToDoListScreenState extends State<ToDoListScreen> {
       widget.currentDay,
     );
 
-    if (stats.completionRate < 0.5) {
+    if (stats.totalRate < 0.5) {
       await showDialog(
         context: context,
         builder: (context) => AlertDialog(

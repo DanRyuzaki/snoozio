@@ -243,7 +243,7 @@ class ToDoLogic {
         .cast<Map<String, dynamic>>();
     final totalActivities = activities.length;
 
-    int completedCount = 0;
+    int validActivities = 0;
     for (int i = 0; i < totalActivities; i++) {
       final activityId = getActivityId('day_$currentDay', i);
       final statusDoc = await _firestore
@@ -253,12 +253,15 @@ class ToDoLogic {
           .doc(activityId)
           .get();
 
-      if (statusDoc.exists && statusDoc['status'] == 'done') {
-        completedCount++;
+      if (statusDoc.exists) {
+        final status = statusDoc['status'] as String;
+        if (status == 'done' || status == 'skipped') {
+          validActivities++;
+        }
       }
     }
 
-    final completionRate = completedCount / totalActivities;
+    final completionRate = validActivities / totalActivities;
 
     if (completionRate >= 0.5) {
       await userDocRef.update({

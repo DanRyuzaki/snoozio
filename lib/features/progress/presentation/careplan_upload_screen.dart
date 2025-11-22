@@ -62,6 +62,7 @@ class _CarePlanUploadScreenState extends State<CarePlanUploadScreen> {
           .set(data);
 
       if (context.mounted) {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Care Plan uploaded successfully!')),
         );
@@ -74,6 +75,7 @@ class _CarePlanUploadScreenState extends State<CarePlanUploadScreen> {
       setState(() {});
     } catch (e) {
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(SnackBar(content: Text('Error: $e')));
     } finally {
