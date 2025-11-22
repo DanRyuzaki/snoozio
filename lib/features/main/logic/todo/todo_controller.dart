@@ -82,7 +82,7 @@ class ToDoLogic {
     }
 
     final completionRate = validActivities / totalActivities;
-    return completionRate >= 0.8;
+    return completionRate >= 0.5;
   }
 
   static Future<int> getCurrentDay() async {
@@ -260,7 +260,7 @@ class ToDoLogic {
 
     final completionRate = completedCount / totalActivities;
 
-    if (completionRate >= 0.8) {
+    if (completionRate >= 0.5) {
       await userDocRef.update({
         'currentDay': currentDay + 1,
         'lastProgressUpdate': FieldValue.serverTimestamp(),
@@ -371,7 +371,7 @@ class DayCompletionStats {
 
   double get completionRate => total > 0 ? completed / total : 0.0;
   double get totalRate => total > 0 ? (completed + skipped) / total : 0.0;
-  bool get canAdvance => completionRate >= 0.8;
+  bool get canAdvance => completionRate >= 0.5;
   int get remaining => total - (completed + skipped + missed);
 }
 

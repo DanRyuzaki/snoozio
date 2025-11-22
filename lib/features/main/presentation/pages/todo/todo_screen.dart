@@ -661,9 +661,7 @@ class _ToDoListScreenState extends State<ToDoListScreen> {
         children: [
           Expanded(
             child: TextButton.icon(
-              onPressed: canProgress && !_isProcessing
-                  ? _handleMoveToNextDay
-                  : null,
+              onPressed: _isProcessing ? null : _handleMoveToNextDay,
               icon: HugeIcon(
                 icon: HugeIcons.strokeRoundedArrowRight01,
                 size: 16,
@@ -718,6 +716,42 @@ class _ToDoListScreenState extends State<ToDoListScreen> {
   }
 
   Future<void> _handleMoveToNextDay() async {
+    final carePlan = await ToDoLogic.getUserCarePlan();
+    final stats = await ToDoLogic.getDayCompletionStats(
+      carePlan,
+      widget.currentDay,
+    );
+
+    if (stats.completionRate < 0.5) {
+      await showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          backgroundColor: const Color(0xFF1E0F33),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          title: const Text(
+            'Progression Requirement',
+            style: TextStyle(color: Colors.white),
+          ),
+          content: const Text(
+            'Users are required to meet 50% of completed activities before progression. If you have 0 activities left to take, click the restart button.',
+            style: TextStyle(color: Colors.white70),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF6C5CE7),
+              ),
+              child: const Text('Okay', style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
