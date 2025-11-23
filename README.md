@@ -52,7 +52,7 @@ This system was developed as part of a **System Acquisition Initiative** led by 
 ---
 ## ⿻ Screenshots
 
-| ![s1](./screenshots/1.png) | ![s2](./screenshots/2.ppg) |
+| ![s1](./screenshots/1.png) | ![s2](./screenshots/2.png) |
 | ![s3](./screenshots/3.png) | ![s4](./screenshots/4.png) |
 | ![s5](./screenshots/5.png) | ![s6](./screenshots/6.png) |
 | ![s7](./screenshots/7.png) | ![s8](./screenshots/8.png) |
